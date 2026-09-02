@@ -5,3 +5,4 @@
 .project
 .env
 secrets.json
+.gitignore
