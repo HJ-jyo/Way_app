@@ -52,18 +52,20 @@ public class NewUser extends model.UserData {
 				System.out.println("好感度を入力してください");
 				String setinglikeAbility = scan.next();
 				setLikeAbility(setinglikeAbility);
+				System.out.println("----" + "作成が完了しました" + "----");
+				System.out.println("名前：" + getName());
+				System.out.println("誕生日：" + getBirthday());
+				System.out.println("血液型：" + getBloodType() + "型");
+				System.out.println("趣味：" + getHobby());
+				System.out.println("メモ：" + getMemo());
+				System.out.println("好感度：" + getLikeAbility());
+				System.out.println("-----------------------");
+				System.out.println("メニュー選択画面に戻ります");
+				SystemMenu.Menu();
+				break;
 			} catch (Exception e) {
 			}
-			System.out.println("----" + "作成が完了しました" + "----");
-			System.out.println("名前：" + getName());
-			System.out.println("誕生日：" + getBirthday());
-			System.out.println("血液型：" + getBloodType() + "型");
-			System.out.println("趣味：" + getHobby());
-			System.out.println("メモ：" + getMemo());
-			System.out.println("好感度：" + getLikeAbility());
-			System.out.println("-----------------------");
-			System.out.println("メニュー選択画面に戻ります");
-			SystemMenu.Menu();
+
 		}
 	}
 }
