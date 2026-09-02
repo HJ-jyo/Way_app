@@ -8,13 +8,16 @@ public class UserData {
 	private String bloodType;
 	private String hobby;
 	private String memo;
+	private String likeAbility;
 
-	public UserData(String name, LocalDate birthday, String bloodType, String hobby, String memo) {
+	public UserData(String name, LocalDate birthday, String bloodType, String hobby, String memo, String likeAbility) {
+		super();
 		this.name = name;
 		this.birthday = birthday;
 		this.bloodType = bloodType;
 		this.hobby = hobby;
 		this.memo = memo;
+		this.likeAbility = likeAbility;
 	}
 
 	public String getName() {
@@ -55,6 +58,14 @@ public class UserData {
 
 	public void setMemo(String memo) {
 		this.memo = memo;
+	}
+
+	public String getLikeAbility() {
+		return likeAbility;
+	}
+
+	public void setLikeAbility(String likeAbility) {
+		this.likeAbility = likeAbility;
 	}
 
 }
