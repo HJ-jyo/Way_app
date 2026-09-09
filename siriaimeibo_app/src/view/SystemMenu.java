@@ -1,9 +1,12 @@
 package view;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.UserData;
 import service.NewUser;
+import service.ShowList;
 
 public class SystemMenu extends UserData {
 
@@ -18,7 +21,26 @@ public class SystemMenu extends UserData {
 
 	public static void Menu() {
 		int unser = 0;
+
 		while (true) {
+			ArrayList<String[]> allProfiles = new ArrayList<>();
+			File dir = new File("UserList");
+			if (!dir.exists()) {
+				dir.mkdirs();
+				System.out.println("UserList フォルダを新規作成しました。");
+			}
+			File[] files = dir.listFiles((dirPath, name) -> name.endsWith(".txt"));
+			;
+			if (files != null) {
+				for (File file : files) {
+					String fileName = file.getName();
+					String dataString = fileName.replace(".txt", "");
+					String[] profileData = dataString.split("-");
+					allProfiles.add(profileData);
+
+				}
+
+			}
 			if (coming == 0) {
 				System.out.println("ようこそマスター!こちらではプロフィールの閲覧や登録が可能です");
 				coming += 1;
@@ -27,13 +49,17 @@ public class SystemMenu extends UserData {
 			try {
 				unser = 0;
 				Thread.sleep(1500);
-				System.out.println("1:新規登録/" + "2:一覧表記/" + "3:編集・更新/" + "4:削除/" + "5:検索/" + "6:新規カテゴリ作成/" + "7:終了");
+				System.out.println("ファイルを読み込んでいます・・・");
+				Thread.sleep(1500);
+				System.out.println(
+						"1:新規登録/" + "2:一覧表記/" + "3:編集・更新/" + "4:削除/" + "5:検索/" + "6:新規カテゴリ作成/" + "7:終了");
 				unser = scan.nextInt();
 				if (unser == 1) {
 					NewUser newUser = new NewUser(null, null, null, null, null, null);
 					newUser.signUp();
 					continue;
 				} else if (unser == 2) {
+					ShowList.showList(allProfiles);
 					continue;
 				} else if (unser == 3) {
 					continue;
@@ -57,4 +83,5 @@ public class SystemMenu extends UserData {
 		}
 
 	}
+
 }

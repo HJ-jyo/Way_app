@@ -1,6 +1,7 @@
 package service;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -105,8 +106,10 @@ public class NewUser extends model.UserData {
 					setLikeAbility(setinglikeAbility);
 					profileList.add(setinglikeAbility);
 					String createFileName = String.join("-", profileList) + ".txt";
-					FileWriter file = new FileWriter(createFileName);
-					PrintWriter pw = new PrintWriter(new BufferedWriter(file));
+					File dir = new File("UserList");
+					File targetFile = new File(dir, createFileName);
+					FileWriter fw = new FileWriter(targetFile);
+					PrintWriter pw = new PrintWriter(new BufferedWriter(fw));
 					String fileContent = String.join("-", profileList);
 					pw.println(fileContent);
 					pw.close();
