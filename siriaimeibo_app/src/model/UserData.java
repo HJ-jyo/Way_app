@@ -1,16 +1,14 @@
 package model;
 
-import java.time.LocalDate;
-
 public class UserData {
 	private String name;
-	private LocalDate birthday;
+	private String birthday;
 	private String bloodType;
 	private String hobby;
 	private String memo;
 	private String likeAbility;
 
-	public UserData(String name, LocalDate birthday, String bloodType, String hobby, String memo, String likeAbility) {
+	public UserData(String name, String birthday, String bloodType, String hobby, String memo, String likeAbility) {
 		super();
 		this.name = name;
 		this.birthday = birthday;
@@ -18,6 +16,16 @@ public class UserData {
 		this.hobby = hobby;
 		this.memo = memo;
 		this.likeAbility = likeAbility;
+	}
+
+	public UserData(String birthday) {
+		super();
+		this.name = "未設定";
+		this.birthday = "未設定";
+		this.bloodType = "未設定";
+		this.hobby = "未設定";
+		this.memo = "未設定";
+		this.likeAbility = "未設定";
 	}
 
 	public String getName() {
@@ -28,11 +36,11 @@ public class UserData {
 		this.name = name;
 	}
 
-	public LocalDate getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(LocalDate birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 
