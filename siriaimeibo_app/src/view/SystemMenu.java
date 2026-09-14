@@ -2,6 +2,7 @@ package view;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import model.UserData;
@@ -19,19 +20,26 @@ public class SystemMenu extends UserData {
 	static Scanner scan = new Scanner(System.in);
 	static int coming = 0;
 
+	static String fileCounter;
+
 	public static void Menu() {
 		int anser;
 		while (true) {
 			ArrayList<String[]> allProfiles = new ArrayList<>();
 			File dir = new File("UserList");
 			File[] files = dir.listFiles((dirPath, name) -> name.endsWith(".txt"));
-			;
+			int counter = 99990000; //誕生日などの数列に引っかかってしまうエラー防止装置
 			if (files != null) {
 				for (File file : files) {
+					counter += 1;
 					String fileName = file.getName();
 					String dataString = fileName.replace(".txt", "");
 					String[] profileData = dataString.split("-");
-					allProfiles.add(profileData);
+					fileCounter = String.valueOf(counter);
+					String newElement = fileCounter;
+					String[] newArray = Arrays.copyOf(profileData, profileData.length + 1);
+					newArray[newArray.length - 1] = newElement;
+					allProfiles.add(newArray);
 				}
 
 			}
