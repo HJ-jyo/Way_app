@@ -6,14 +6,12 @@ import java.util.ArrayList;
 
 import model.UserEntity;
 
-public class ShowList extends UserEntity {
-	@SuppressWarnings("static-access")
+public class ShowList {
 	public static void showList(ArrayList<String[]> allProfiles) {
-		UserEntity userEntity = new UserEntity();
 		LocalDate today = LocalDate.now();
 		for (String[] profile : allProfiles) {
 			String name = profile[0];
-			LocalDate birthday = userEntity.convertToDate(profile[1]);
+			LocalDate birthday = UserEntity.convertToDate(profile[1]);
 			int age = Period.between(birthday, today).getYears();
 			String memo = profile[4];
 			String likeAbility = profile[5];
