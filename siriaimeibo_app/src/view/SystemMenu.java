@@ -19,16 +19,16 @@ public class SystemMenu extends UserData {
 
 	static Scanner scan = new Scanner(System.in);
 	static int coming = 0;
-
 	static String fileCounter;
 
 	public static void Menu() {
-		int anser;
+		int anser = 0;
 		while (true) {
+
 			ArrayList<String[]> allProfiles = new ArrayList<>();
 			File dir = new File("UserList");
 			File[] files = dir.listFiles((dirPath, name) -> name.endsWith(".txt"));
-			int counter = 99990000; //誕生日などの数列に引っかかってしまうエラー防止装置
+			int counter = 99990000; //数列に検索で引っかかってしまうエラー防止装置とりあえず9999にしとく
 			if (files != null) {
 				for (File file : files) {
 					counter += 1;
@@ -41,34 +41,37 @@ public class SystemMenu extends UserData {
 					newArray[newArray.length - 1] = newElement;
 					allProfiles.add(newArray);
 				}
-
 			}
+
 			if (coming == 0) {
 				System.out.println("ようこそマスター!こちらではお知り合いのプロフィール閲覧や登録が可能です");
-				coming += 1;
 				System.out.println("今回はどうなさいますか？");
 			}
 			try {
+				coming += 1;
+				if (coming >= 2) {
+					System.out.println("この次はどうします？");
+				}
 				anser = 0;
-				Thread.sleep(1500);
-				System.out.println("ファイルを読み込んでいます・・・");
-				Thread.sleep(1500);
 				System.out.println(
 						"1:新規登録/" + "2:一覧表記/" + "3:編集・更新/" + "4:削除/" + "5:検索/" + "6:新規カテゴリ作成/" + "7:終了");
 				anser = scan.nextInt();
 				if (anser == 1) {
-					NewUser newUser = new NewUser(null, null, null, null, null, null);
+					NewUser newUser = new NewUser("未設定", "未設定", "未設定", "未設定", "未設定", "未設定");
 					newUser.signUp();
 					continue;
 				} else if (anser == 2) {
+					System.out.println("変更がないか確認しています・・・");
 					ShowList.showList(allProfiles);
 					continue;
 				} else if (anser == 3) {
+					System.out.println("変更がないか確認しています・・・");
 					Edit.edit(allProfiles);
 					continue;
 				} else if (anser == 4) {
 					continue;
 				} else if (anser == 5) {
+					System.out.println("変更がないか確認しています・・・");
 					continue;
 				} else if (anser == 6) {
 					continue;
@@ -77,6 +80,7 @@ public class SystemMenu extends UserData {
 					break;
 				}
 			} catch (Exception e) {
+				System.out.println(anser);
 				System.out.println("打つ値を間違えてますよ...");
 			}
 			break;

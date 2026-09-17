@@ -7,7 +7,9 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class NewUser extends model.UserData {
+import model.UserData;
+
+public class NewUser extends UserData {
 
 	static Scanner scan = new Scanner(System.in);
 
@@ -20,6 +22,7 @@ public class NewUser extends model.UserData {
 		while (isInvalid) {
 			ArrayList<String> profileList = new ArrayList<>();
 			isInvalid = true;
+
 			while (isInvalid) {
 				try {
 					System.out.println("名前を入力してください");
@@ -35,10 +38,11 @@ public class NewUser extends model.UserData {
 					System.out.println(e.getMessage());
 				}
 			}
+
 			isInvalid = true;
 			while (isInvalid) {
 				try {
-					System.out.println("誕生日を入力してください" + "※注意:日付は必ず" + 20000123 + "(記号なしの年月日８桁で入力してください");
+					System.out.println("誕生日を入力してください" + "※注意:日付は必ず" + 20000123 + "(例のような記号なしの年月日８桁で入力してください");
 					String setingBirthday = scan.next();
 					if (setingBirthday.contains("-")) {
 						throw new IllegalArgumentException("-は使用できません");
@@ -50,6 +54,7 @@ public class NewUser extends model.UserData {
 					System.out.println(e.getMessage());
 				}
 			}
+
 			isInvalid = true;
 			while (isInvalid) {
 				try {
@@ -65,6 +70,7 @@ public class NewUser extends model.UserData {
 					System.out.println(e.getMessage());
 				}
 			}
+
 			isInvalid = true;
 			while (isInvalid) {
 				try {
@@ -80,6 +86,7 @@ public class NewUser extends model.UserData {
 					System.out.println(e.getMessage());
 				}
 			}
+
 			isInvalid = true;
 			while (isInvalid) {
 				try {
@@ -95,6 +102,7 @@ public class NewUser extends model.UserData {
 					System.out.println(e.getMessage());
 				}
 			}
+
 			isInvalid = true;
 			while (isInvalid) {
 				try {
@@ -124,8 +132,6 @@ public class NewUser extends model.UserData {
 					System.out.println("メニュー選択画面に戻ります");
 					isInvalid = false;
 					break;
-				} catch (IllegalArgumentException e) {
-					System.out.println(e.getMessage());
 				} catch (java.io.IOException e) {
 					System.out.println("ファイルの保存中にエラーが発生しました: " + e.getMessage());
 				}
