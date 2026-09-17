@@ -17,7 +17,7 @@ public class NewUser extends UserData {
 		super(name, birthday, bloodType, hobby, memo, likeAbility);
 	}
 
-	public void signUp() {
+	public void Create() {
 		boolean isInvalid = true;
 		while (isInvalid) {
 			ArrayList<String> profileList = new ArrayList<>();
