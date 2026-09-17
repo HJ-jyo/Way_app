@@ -27,6 +27,11 @@ public class SystemMenu extends UserData {
 
 			ArrayList<String[]> allProfiles = new ArrayList<>();
 			File dir = new File("UserList");
+
+			if (!dir.exists()) {
+				dir.mkdirs();
+			}
+
 			File[] files = dir.listFiles((dirPath, name) -> name.endsWith(".txt"));
 			int counter = 99990000; //数列に検索で引っかかってしまうエラー防止装置とりあえず9999にしとく
 			if (files != null) {
@@ -58,7 +63,7 @@ public class SystemMenu extends UserData {
 				anser = scan.nextInt();
 				if (anser == 1) {
 					NewUser newUser = new NewUser("未設定", "未設定", "未設定", "未設定", "未設定", "未設定");
-					newUser.signUp();
+					newUser.Create();
 					continue;
 				} else if (anser == 2) {
 					System.out.println("変更がないか確認しています・・・");
