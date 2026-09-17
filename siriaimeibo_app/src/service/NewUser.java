@@ -113,6 +113,7 @@ public class NewUser extends UserData {
 					}
 					setLikeAbility(setinglikeAbility);
 					profileList.add(setinglikeAbility);
+
 					String createFileName = String.join("-", profileList) + ".txt";
 					File dir = new File("UserList");
 					File targetFile = new File(dir, createFileName);
