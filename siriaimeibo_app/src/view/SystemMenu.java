@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import model.UserData;
+import service.Delete;
 import service.Edit;
 import service.NewUser;
 import service.ShowList;
@@ -74,6 +75,8 @@ public class SystemMenu extends UserData {
 					Edit.edit(allProfiles);
 					continue;
 				} else if (anser == 4) {
+					System.out.println("変更がないか確認しています・・・");
+					Delete.delete(allProfiles);
 					continue;
 				} else if (anser == 5) {
 					System.out.println("変更がないか確認しています・・・");
