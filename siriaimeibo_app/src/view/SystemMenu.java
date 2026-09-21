@@ -9,6 +9,7 @@ import model.UserData;
 import service.Delete;
 import service.Edit;
 import service.NewUser;
+import service.Search;
 import service.ShowList;
 
 public class SystemMenu extends UserData {
@@ -58,7 +59,6 @@ public class SystemMenu extends UserData {
 				if (coming >= 2) {
 					System.out.println("この次はどうします？");
 				}
-				anser = 0;
 				System.out.println(
 						"1:新規登録/" + "2:一覧表記/" + "3:編集・更新/" + "4:削除/" + "5:検索/" + "6:新規カテゴリ作成/" + "7:終了");
 				anser = scan.nextInt();
@@ -67,19 +67,16 @@ public class SystemMenu extends UserData {
 					newUser.Create();
 					continue;
 				} else if (anser == 2) {
-					System.out.println("変更がないか確認しています・・・");
 					ShowList.showList(allProfiles);
 					continue;
 				} else if (anser == 3) {
-					System.out.println("変更がないか確認しています・・・");
 					Edit.edit(allProfiles);
 					continue;
 				} else if (anser == 4) {
-					System.out.println("変更がないか確認しています・・・");
 					Delete.delete(allProfiles);
 					continue;
 				} else if (anser == 5) {
-					System.out.println("変更がないか確認しています・・・");
+					Search.search();
 					continue;
 				} else if (anser == 6) {
 					continue;
