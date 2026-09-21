@@ -4,6 +4,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -40,10 +44,17 @@ public class NewUser extends UserData {
 		isInvalid = true;
 		while (isInvalid) {
 			try {
-				System.out.println("誕生日を入力してください" + "※注意:日付は必ず" + 20000123 + "(例のような記号なしの年月日８桁で入力してください");
+				System.out.println("生年月日を入力してください" + "※注意:日付は必ず" + 20000123 + "(例のような記号なしの年月日８桁で入力してください");
 				String setingBirthday = scan.next();
 				if (setingBirthday.contains("-")) {
 					throw new IllegalArgumentException("-は使用できません");
+				}
+				try {
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuuMMdd")
+							.withResolverStyle(ResolverStyle.STRICT);
+					LocalDate.parse(setingBirthday, formatter);
+				} catch (DateTimeParseException e) {
+					throw new IllegalArgumentException("正しい生年月日を入力してください。");
 				}
 				setBirthday(setingBirthday);
 				profileList.add(setingBirthday);
