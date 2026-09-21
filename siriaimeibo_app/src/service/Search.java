@@ -14,10 +14,9 @@ public class Search {
 				System.out.println("検索したい内容を入力してください。" + "0でメニュー画面に戻ります");
 				String keyWord = scan.next();
 				File searchDir = new File("UserList");
-				File[] files = searchDir.listFiles((dirPath, name) -> name.contains(keyWord));
+				File[] files = searchDir.listFiles((dirPath, name) -> name.contains(keyWord) && name.endsWith(".txt"));
 				if (keyWord.equals("0")) {
 					break;
-
 				} else if (files != null && files.length > 0) {
 					for (File file : files) {
 						String fileName = file.getName();

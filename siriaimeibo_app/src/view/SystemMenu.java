@@ -8,6 +8,7 @@ import java.util.Scanner;
 import model.UserData;
 import service.Delete;
 import service.Edit;
+import service.EditCategory;
 import service.NewUser;
 import service.Search;
 import service.ShowList;
@@ -35,7 +36,7 @@ public class SystemMenu extends UserData {
 			}
 
 			File[] files = dir.listFiles((dirPath, name) -> name.endsWith(".txt"));
-			int counter = 99990000; //数列に検索で引っかかってしまうエラー防止装置とりあえず9999にしとく
+			int counter = 99990000; //結局使わないことに気づいたけど表記崩れ防げるしこのままにしておく。
 			if (files != null) {
 				for (File file : files) {
 					counter += 1;
@@ -59,6 +60,7 @@ public class SystemMenu extends UserData {
 				if (coming >= 2) {
 					System.out.println("この次はどうします？");
 				}
+				anser = 0;
 				System.out.println(
 						"1:新規登録/" + "2:一覧表記/" + "3:編集・更新/" + "4:削除/" + "5:検索/" + "6:新規カテゴリ作成/" + "7:終了");
 				anser = scan.nextInt();
@@ -79,6 +81,7 @@ public class SystemMenu extends UserData {
 					Search.search();
 					continue;
 				} else if (anser == 6) {
+					EditCategory.editCategory(allProfiles);
 					continue;
 				} else if (anser == 7) {
 					System.out.println("お疲れ様でした、また来てくださいね。");

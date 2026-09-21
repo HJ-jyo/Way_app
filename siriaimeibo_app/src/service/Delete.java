@@ -27,7 +27,7 @@ public class Delete {
 				String bloodtype = profile[2];
 				String hobby = profile[3];
 				String likeAbility = profile[5];
-				String fileCounter = profile[6];
+				String fileCounter = profile[profile.length - 1];
 
 				LocalDate birth = UserEntity.convertToDate(profile[1]);
 				int age = Period.between(birth, today).getYears();
