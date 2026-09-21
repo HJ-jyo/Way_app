@@ -9,6 +9,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -108,9 +111,12 @@ public class Edit extends UserData {
 							try {
 								System.out.println("生年月日を入力してください");
 								String setingBirthday = scan.next();
-
-								if (setingBirthday.contains("-")) {
-									throw new IllegalArgumentException("-は使用できません");
+								try {
+									DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuuMMdd")
+											.withResolverStyle(ResolverStyle.STRICT);
+									LocalDate.parse(setingBirthday, formatter);
+								} catch (DateTimeParseException e) {
+									throw new IllegalArgumentException("正しい生年月日を入力してください。");
 								}
 								copyFile[1] = setingBirthday;
 								isInvalid = false;
